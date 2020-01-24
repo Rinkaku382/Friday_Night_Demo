@@ -1,0 +1,10 @@
+﻿I'm sorry, but errors were detected in your script. Please correct the
+errors listed below, and try again.
+
+
+File "game/script.rpy", line 1: expected statement.
+    ﻿define slowfade = Fade(1.0, 0, 1.0)
+                     ^
+
+Ren'Py Version: Ren'Py 7.2.2.491
+Fri Jan 24 13:19:37 2020
