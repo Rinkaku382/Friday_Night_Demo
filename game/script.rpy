@@ -333,7 +333,7 @@ label guy_conversation:
 
         I then get up, smiling back at Shira and turning myself toward the guy, determined to approach him.
         """
-        scene hong0_3:
+        scene hong0_0:
             xalign 1.0
         with slowdissolve
         m "Hey there."
@@ -341,6 +341,8 @@ label guy_conversation:
         g "Uhm...hi. Do we know each other?"
         m "Only by sight, I suppose. Can I sit here?"
         g "Of course, go on. By sight, you say?"
+        scene hong0_1
+        with slowdissolve
         m "Well, my friend over there said you've been watching me since we arrived. Is it true, or...?"
         "His face is embarassed."
         g "Let's say it...it might be true. I just didn't expect for you to come here and talk to me."
@@ -369,13 +371,15 @@ label guy_conversation:
         s "Come on, then, just go and talk to him!"
         m "Yes, just...just one moment."
         "I slowly empty the glass, with little sips, before getting up and reach him."
-        scene hong0_3:
+        scene hong0_0:
             xalign 1.0
         with slowdissolve
         m "Hi there..."
         "I try to show myself convincing and happy, but I end up losing myself to embarassment."
         g "Hi!"
         m "Is there someone sit here?"
+        scene hong0_1
+        with slowdissolve
         g "Oh no, not at all. But...I guess we don't actually know each other, don't we?"
         menu:
             "Lie.":
@@ -418,7 +422,7 @@ label guy_conversation:
             linear 3.5 xalign 0.0
         $ renpy.pause(3.5)
         "I slowly empty my glass, before getting up and sit next to him, trying to figure out what to say."
-        scene hong0_3:
+        scene hong0_0:
             xalign 1.0
         with slowdissolve
         $ renpy.pause(1.2)
@@ -427,6 +431,8 @@ label guy_conversation:
         "I soon realize I don't know what to say and look at him embarassed as he doesn't understand why I'm talking to him"
         g "Are you alone too?"
         m "I was here with a friend, but she has left."
+        scene hong1_sad
+        with slowdissolve
         g "Oh, I'm sorry...well, I guess that makes two of us who's been left here alone."
         m "Someone left you too?"
         g "Let's say so."
@@ -453,6 +459,8 @@ label guy_conversation:
 label conversation_why:
     ## GUY CONVERSATION - AROUSED ROUTE (SOFIA IS EXCITED)
     if irr_points >= 5 and aro_points >= 8 and sad_points >= 2:
+        scene hong1_sad
+        with slowdissolve
         g "A certain situation? Do you want to talk about it?"
         menu:
             "It's just a difficult period.":
@@ -464,27 +472,39 @@ label conversation_why:
         g "About your situation. I hope it's not...uhmm...something sombre?"
         m "To be sincere I don't really know. Sometimes it is, sometimes it's not."
     elif irr_points >= 5 and aro_points >= 10:
+        scene hong1_flirt
+        with slowdissolve
         g "I guess this makes us similar. I came hoping to have fun too."
         m "And are you?"
         g "Before you came not really, now...maybe."
     elif irr_points >= 5 and aro_points >= 8 and gen_points >= 2:
+        scene hong1_flirt
+        with slowdissolve
         g "So you came here to get drunk?"
         m "Well, who knows. I think that everything can happen, tonight! Don't you think so too?"
         g "Guess you're right. Besides, it's a bar, so we might as well drink."
 
     ## GUY CONVERSATION - INGENUOUS ROUTE (SOFIA IS EMBARASSED)
     if ing_points >= 1 and sad_points >= 4 and aro_points >= 4:
+        scene hong1_cheer
+        with slowdissolve
         g """
         Well, I don't think that's a problem.
 
         if you don't feel like drinking too much we can avoid drinking at all.
         """
-        m "Yeah, thanks."
+        m "Don't worry, it's not really a problem..."
+        g "You sure?"
+        m "Yes, of course, let's just enjoy the night..."
     elif ing_points >= 3 and sad_points >= 2 and aro_points >= 6:
+        scene hong1_flirt
+        with slowdissolve
         g "And...have you found that someone you are looking for?"
         m "Who knows, maybe I did. There's an entire night to discover it."
         g "Guess you're right. Nights are pretty long in here, too."
     elif ing_points >= 4 and sad_points >= 2 and aro_points >= 4:
+        scene hong1_sad
+        with slowdissolve
         g "That makes two of us, although I ended up completely alone."
         m "Completely alone? Why?"
         g "My friend never showed up, and I've been waiting for two hours."
@@ -493,18 +513,26 @@ label conversation_why:
 
     ## GUY CONVERSATION - SAD ROUTE (SOFIA IS ALONE)
     elif ing_points >= 1 and irr_points >= 3 and aro_points >= 2 and sad_points >=4:
+        scene hong1_sad
+        with slowdissolve
         g "But?"
         m "Well, today the conversation wasn't nice at all and...she left me here."
         g "Yeah, I can totally understand. I've been waiting for two hours for my friend but, as you can se, I'm alone here."
         m "Let's forget them, then!"
         g "Absolutely, let's drink instead!"
     elif ing_points >= 3 and irr_points >= 3 and aro_points >= 4 and sad_points >= 2:
+        scene hong1_sad
+        with slowdissolve
         g "And that's why you approached me?"
         m "I guess you could say that."
         "He seems to notice immediately my ambarassment and he smiles."
+        scene hong0_1
+        with slowdissolve
         g "Let's drink something together, then, as we're both alone tonight!"
     elif ing_points >= 3 and irr_points >= 3 and aro_points >= 2 and sad_points >= 2:
         g "You know what? I've been waiting for a friend for two hours. Fuck friends, let's just drink for the entire night."
+        scene hong1_cheer
+        with slowdissolve
         m "I totally agree, I'm happy to have met someone like you."
         g "I'm happy too!"
 
@@ -612,14 +640,14 @@ label street:
             It's worth at least trying. And besides...I must admit I miss him a little, even if I still am pissed off.
             """
             jump home
-        "Going back to him would be a mistake.":
+        "I don't think I want to...":
             $ sad_points += 3
             """
-            It definately would be an error.
+            For now, I just want to wander for a little more...
 
-            After all, I know how poisonous he's for me. It doesn't matter how much I try, there's no use in faking it.
+            There's silence, here, and it's all I want.
 
-            It's way better to stay alone, at least for a while, in these rainy streets than go home.
+            It's way better to stay alone even if for a while, in these rainy streets than going back home.
             """
             jump street2
 
@@ -687,7 +715,7 @@ label street2:
             jump director
 
 label director:
-    show backg_4
+    show shinya0_0
     with dissolve
     """
     As I enter the alley, I instantly feel observed by someone.
