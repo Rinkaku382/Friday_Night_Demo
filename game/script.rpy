@@ -36,6 +36,9 @@ label start:
     $ guy_nhelp = False
     stop music fadeout (1.0)
 
+    show black
+    with fadehold
+
     scene shira0_0
     with slowfade
     play music "bar_bgm.ogg" fadein (2.0)
